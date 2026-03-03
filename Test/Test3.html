@@ -1,13 +1,100 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Contoh External CSS</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cek Nilai Mahasiswa</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f6ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        input {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+        
+        button {
+            padding: 8px 15px;
+            border: none;
+            background: #4a7dff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #365fd6;
+        }
+        
+        #hasil {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
 </head>
 
 <body>
-    <h1>Selamat Datang di Website Kami</h1>
-    <p>Ini adalah contoh penggunaan External CSS.</p>
+
+    <div class="box">
+        <h2>Cek Nilai Mahasiswa</h2>
+
+        <input type="text" id="nim" placeholder="Masukkan NIM"><br>
+        <input type="number" id="nilai" placeholder="Masukkan Nilai"><br>
+
+        <button onclick="cekNilai()">Cek Nilai</button>
+
+        <p id="hasil"></p>
+    </div>
+
+    <script>
+        function cekNilai() {
+
+            let nim = document.getElementById("nim").value;
+            let nilai = parseInt(document.getElementById("nilai").value);
+            let huruf;
+
+            if (nilai < 0 || nilai > 100) {
+                document.getElementById("hasil").innerText = "Nilai tidak valid!";
+                return;
+            }
+
+            if (nilai >= 85) {
+                huruf = "A";
+            } else if (nilai >= 70) {
+                huruf = "B";
+            } else if (nilai >= 60) {
+                huruf = "C";
+            } else if (nilai >= 50) {
+                huruf = "D";
+            } else {
+                huruf = "E";
+            }
+
+            document.getElementById("hasil").innerText =
+                "NIM: " + nim + " | Huruf Mutu: " + huruf;
+
+        }
+    </script>
+
 </body>
 
 </html>
