@@ -1,4 +1,14 @@
-<?php include 'koneksi.php'; ?>
+<?php 
+session_start();
+
+// Cek apakah user udah login belum
+if(!isset($_SESSION['username'])) { 
+    header("Location: login.php"); 
+    exit; 
+}
+
+include 'koneksi.php'; 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +16,9 @@
 </head>
 <body>
     <h2>Data Koleksi Buku</h2>
+    
+    <p>Halo, <b><?php echo $_SESSION['nama_lengkap']; ?></b>! | <a href="logout.php">Logout</a></p>
+
     <a href="tambah.php">[+] Tambah Buku Baru</a><br><br>
     
     <table border="1" cellpadding="8" cellspacing="0">
